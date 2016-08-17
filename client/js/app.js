@@ -8,7 +8,7 @@ var Diner = function (name){
 Diner.prototype.addMenuItems = function addMenuItems(items){
     items.forEach(function(item){
       this.menuItems.push(item);
-    },this) //ask Chad
+    },this) 
     
   // this.menuItems.concat(items);  
 
@@ -24,9 +24,6 @@ Diner.prototype.getTotalMealCost = function getTotalMealCost(){
     
 };
 
-Diner.prototype.print = function print() {
-    console.log(sum);
-};
 
 //object for bill
 
@@ -47,7 +44,7 @@ Bill.prototype.setTaxRate = function setTaxRate(taxRate){
 };
 
 
-Bill.prototype.setTip = function setTip(){
+Bill.prototype.setTip = function setTip(tip){
     this.tip = (tip/100);
 };
 
@@ -58,22 +55,23 @@ Bill.prototype.getGrandTotal = function getGrandTotal(){
    data.tip = 0
    data.dinerBreakdown = [];
    this.diners.forEach(function(diner){
-    // Sue: $15.50 = $10.20 meal + $2.20 tax + $1.30 tip
-    debugger;
+    // Sue: $15.50 = $10.20 meal + $2.20 tax + $1.30 tip 
     var meal = diner.getTotalMealCost()
     var tax = meal * this.taxRate 
     var tip = meal * this.tip
     var sum = meal + tax + tip
-     data.dinerBreakdown.push(diner.name + ': ' +'$' + meal + '$' + tax  + '$' + tip)
+     data.dinerBreakdown.push(diner.name + ': ' +'$' + meal.toFixed(2) + ' (meal) ' + '$' + tax.toFixed(2) + ' (tax) '  + '$' + tip.toFixed(2) + ' (tip) ')
      data.sum += sum
      data.tip += tip
-   },this) //ask Chad
+   },this) 
    
+   data.sum = data.sum.toFixed(2)
+   data.tip = data.tip.toFixed(2)
    console.log(data)
    
    
 }
-// total bill, total tip, breakdown for each person
+
 
 
 
